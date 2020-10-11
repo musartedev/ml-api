@@ -26,28 +26,32 @@ const formatPrice = (price, currencyId) => {
  */
 exports.formatMeliSearchResponse = (response = {}) => ({
   categories: getCategoriesFromFilters(response.filters),
-  items: formatItems(response.results),
+  items: this.formatItems(response.results),
 });
 
 /**
  * Format Meli Item
  * @param {Array} items
  */
-const formatItems = (items = []) => items.map(item => formatItem(item));
+exports.formatItems = (items = []) => items.map(item => this.formatItem(item));
 
-const formatItem = ({
+exports.formatItem = ({
   id,
   title,
   price,
-  currency_id: currencyId,
+  currency_id,
   thumbnail,
   condition,
   shipping,
+  sold_quantity
 }) => ({
   id,
   title,
-  price: formatPrice(price, currencyId),
+  price: formatPrice(price, currency_id),
   picture: thumbnail,
   condition,
   free_shipping: shipping.free_shipping,
+  sold_quantity
 });
+
+exports.formatItemDescription = (descriptionObj) => (descriptionObj.plain_text);
