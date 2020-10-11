@@ -3,10 +3,10 @@ const { errors } = require('../utils/constants');
 const { okResponse, errorResponse } = require('../utils/response');
 
 exports.find = async (req, res) => {
-  const { q } = req.query;
+  const { q, limit } = req.query;
 
   try {
-    const result = await searchItems(q);
+    const result = await searchItems(q, limit);
     return okResponse(res, 200, result);
   } catch (err) {
     console.log('exports.find -> err', err);

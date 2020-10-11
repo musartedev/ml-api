@@ -9,7 +9,9 @@ exports.get = async (req, res) => {
     const itemInfo = await getItem(id);
     const itemDescription = await getItemDescription(id);
 
-    return okResponse(res, 200, { ...itemInfo, description: itemDescription });
+    return okResponse(res, 200, {
+      item: { ...itemInfo, description: itemDescription },
+    });
   } catch (err) {
     console.log('exports.find -> err', err);
     return errorResponse(res, errors.MELI_REQUEST_ERROR, err);
