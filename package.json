@@ -1,6 +1,6 @@
 {
   "name": "ml-api",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "MercadoLibre API",
   "main": "index.js",
   "keywords": [
