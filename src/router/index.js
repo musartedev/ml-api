@@ -1,4 +1,5 @@
 const express = require('express');
+const searchController = require('../controllers/search');
 
 module.exports = (app) => {
   const apiRoutes = express.Router();
@@ -8,6 +9,8 @@ module.exports = (app) => {
       message: 'Welcome to our api',
     });
   });
+
+  apiRoutes.get('/search', searchController.find);
 
   app.use(apiRoutes);
 };
