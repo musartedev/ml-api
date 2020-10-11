@@ -1,0 +1,48 @@
+{
+  "name": "ml-api",
+  "version": "0.1.0",
+  "description": "MercadoLibre API",
+  "main": "index.js",
+  "keywords": [
+    "javascript",
+    "express",
+    "api",
+    "rest",
+    "mercadolibre"
+  ],
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "format": "prettier --write '{*.js,src/**/*.{js}}'",
+    "lint": "eslint src/ --fix"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "npm run format",
+      "npm run lint",
+      "git add"
+    ]
+  },
+  "author": "Mariangélica Useche <mariangelica.useche@gmail.com>",
+  "license": "ISC"
+}
