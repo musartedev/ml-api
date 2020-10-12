@@ -26,10 +26,15 @@ exports.searchItems = async (query, limit = 50) => {
  * @param {String} id
  */
 exports.getItem = async id => {
-  let response = await fetch(`${MELI_BASE_URL}/items/${id}`);
-  response = await response.json();
+  let item = await fetch(`${MELI_BASE_URL}/items/${id}`);
+  item = await item.json();
 
-  return formatItem(response);
+  let categories = await fetch(
+    `${MELI_BASE_URL}/categories/${item.category_id}`,
+  );
+  categories = await categories.json();
+
+  return formatItem(item, categories);
 };
 
 /**
